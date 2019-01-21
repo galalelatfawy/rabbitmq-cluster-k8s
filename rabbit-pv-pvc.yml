@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    name: rabbitmq
+  name: rabbitmq-pv-claim
+  namespace: test-rabbitmq
+spec:
+  storageClassName: default-storage
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: rabbitmq-pv
+  namespace: test-rabbitmq
+  labels:
+    type: local
+spec:
+  storageClassName: default-storage
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/disks/rabbitmq"
+

@@ -1,0 +1,16 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: config-volume
+  namespace: test-rabbitmq
+  labels:
+    type: local
+spec:
+  storageClassName: default-storage
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/disks/rabbitmq-config"
+
